@@ -1,0 +1,3 @@
+[submodule "contrib/irqn"]
+	path = contrib/irqn
+	url = https://github.com/SushiBits/irqn
