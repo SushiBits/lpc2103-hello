@@ -92,6 +92,7 @@ $(BUILD_DIR)/%.s.o: %.s $(GENHDRS)
 
 $(TARGET): $(OBJS) $(LD_FILES)
 	$(if $(CXX_FILES),$(CXXLD),$(CCLD)) $(LDFLAGS) $(OBJS) $(LIBS) -o $(TARGET)
+	python3 contrib/platform/share/lpcsum.py $(TARGET)
 
 %.ihx: %.elf
 	$(OBJCOPY) -O ihex $< $@
