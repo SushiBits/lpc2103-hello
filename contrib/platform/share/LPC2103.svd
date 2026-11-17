@@ -380,7 +380,7 @@
                         <name>CONP</name>
                         <description>Peripheral Power Control</description>
                         <addressOffset>0x4</addressOffset>
-                        <resetValue>0x000003BE</resetValue>
+                        <resetValue>0x001817BE</resetValue>
                         <fields>
                             <field>
                                 <name>TIM0</name>
