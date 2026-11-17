@@ -2548,14 +2548,12 @@
                             <name>EN</name>
                             <description>WDT Enabled</description>
                             <bitRange>[0:0]</bitRange>
-                            <access>write-only</access>
                             <modifiedWriteValues>oneToSet</modifiedWriteValues>
                         </field>
                         <field>
                             <name>RESET</name>
                             <description>WDT causes RESET</description>
                             <bitRange>[1:1]</bitRange>
-                            <access>write-only</access>
                             <modifiedWriteValues>oneToSet</modifiedWriteValues>
                         </field>
                         <field>
