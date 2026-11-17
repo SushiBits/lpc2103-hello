@@ -1816,5 +1816,19 @@
             </registers>
         </peripheral>
 
+        <peripheral>
+            <name>SSP</name>
+            <description>Synchronous Serial Port</description>
+            <baseAddress>0xE0068000</baseAddress>
+            <addressBlock>
+                <offset>0x0</offset>
+                <size>0x24</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>SSP</name>
+                <value>11</value>
+            </interrupt>
+        </peripheral>
     </peripherals>
 </device>
