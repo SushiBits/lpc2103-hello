@@ -2249,7 +2249,7 @@
             <description>General Purpose Timer 2</description>
             <baseAddress>0xE0070000</baseAddress>
             <interrupt>
-                <name>TIMER1</name>
+                <name>TIMER2</name>
                 <value>26</value>
             </interrupt>
         </peripheral>
@@ -2259,7 +2259,7 @@
             <description>General Purpose Timer 3</description>
             <baseAddress>0xE0074000</baseAddress>
             <interrupt>
-                <name>TIMER1</name>
+                <name>TIMER3</name>
                 <value>27</value>
             </interrupt>
         </peripheral>
