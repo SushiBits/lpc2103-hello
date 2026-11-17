@@ -114,6 +114,7 @@ hardware/*.csv
 contrib/platform/include/*.h
 !contrib/platform/include/*_it.h
 !contrib/platform/include/system_*.h
+!contrib/platform/include/core_*.h
 
 .build/
 *.log
