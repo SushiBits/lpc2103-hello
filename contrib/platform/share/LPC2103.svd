@@ -741,8 +741,8 @@
                     </fields>
                 </register>
                 <register>
-                    <name>VectAddr</name>
-                    <description>Vector Address Register</description>
+                    <name>CurVectAddr</name>
+                    <description>Current Vector Address Register</description>
                     <addressOffset>0x30</addressOffset>
                     <access>read-write</access>
                     <modifiedWriteValues>zeroToClear</modifiedWriteValues>
