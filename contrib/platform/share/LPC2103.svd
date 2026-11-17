@@ -2614,7 +2614,12 @@
             <baseAddress>0xE0024000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
-                <size>0x88</size>
+                <size>0x50</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <addressBlock>
+                <offset>0x60</offset>
+                <size>0x28</size>
                 <usage>registers</usage>
             </addressBlock>
             <interrupt>
@@ -2622,6 +2627,163 @@
                 <value>13</value>
             </interrupt>
             <registers>
+                <register>
+                    <name>ILR</name>
+                    <description>Interrupt Location Register</description>
+                    <addressOffset>0x00</addressOffset>
+                    <modifiedWriteValues>oneToClear</modifiedWriteValues>
+                    <fields>
+                        <field>
+                            <name>CIF</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>ALF</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CTC</name>
+                    <description>Clock Tick Counter</description>
+                    <addressOffset>0x04</addressOffset>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>TICKS</name>
+                            <bitRange>[15:1]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CCR</name>
+                    <description>Clock Control Register</description>
+                    <addressOffset>0x08</addressOffset>
+                    <fields>
+                        <field>
+                            <name>CLKEN</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>CTCRST</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>CLKSRC</name>
+                            <bitRange>[4:4]</bitRange>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>PREDIV</name>
+                                    <value>0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RTCXT</name>
+                                    <value>1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>IIR</name>
+                    <description>Increment Interrupt Register</description>
+                    <addressOffset>0x0C</addressOffset>
+                    <fields>
+                        <field>
+                            <name>SEC</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>MINUTE</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>HOUR</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>DOM</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>DOW</name>
+                            <bitRange>[4:4]</bitRange>
+                        </field>
+                        <field>
+                            <name>DOY</name>
+                            <bitRange>[5:5]</bitRange>
+                        </field>
+                        <field>
+                            <name>MONTH</name>
+                            <bitRange>[6:6]</bitRange>
+                        </field>
+                        <field>
+                            <name>YEAR</name>
+                            <bitRange>[7:7]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register derivedFrom="IIR">
+                    <name>AMR</name>
+                    <description>Alarm Mask Register</description>
+                    <addressOffset>0x10</addressOffset>
+                </register>
+                <register>
+                    <name>CTIME0</name>
+                    <description>Consolidated Time Register 0</description>
+                    <addressOffset>0x14</addressOffset>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>SEC</name>
+                            <bitRange>[5:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>MINUTE</name>
+                            <bitRange>[13:8]</bitRange>
+                        </field>
+                        <field>
+                            <name>HOUR</name>
+                            <bitRange>[20:16]</bitRange>
+                        </field>
+                        <field>
+                            <name>DOW</name>
+                            <bitRange>[26:24]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CTIME1</name>
+                    <description>Consolidated Time Register 1</description>
+                    <addressOffset>0x18</addressOffset>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>DOM</name>
+                            <bitRange>[4:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>MONTH</name>
+                            <bitRange>[11:8]</bitRange>
+                        </field>
+                        <field>
+                            <name>YEAR</name>
+                            <bitRange>[27:16]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CTIME2</name>
+                    <description>Consolidated Time Register 2</description>
+                    <addressOffset>0x1C</addressOffset>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>DOY</name>
+                            <bitRange>[11:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
                 <cluster>
                     <name>NOW</name>
                     <description>Datetime</description>
@@ -2711,11 +2873,60 @@
                         </writeConstraint>
                     </register>
                 </cluster>
+                <register>
+                    <name>PWRCTRL</name>
+                    <description>Low Power Mode Control</description>
+                    <addressOffset>0x40</addressOffset>
+                    <resetValue>0x00000007</resetValue>
+                    <fields>
+                        <field>
+                            <name>PMAIN</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>PSRAM</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>POSC</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <dim>3</dim>
+                    <dimIncrement>4</dimIncrement>
+                    <name>GPREG[%s]</name>
+                    <description>General Purpose Register</description>
+                    <addressOffset>0x44</addressOffset>
+                </register>
                 <cluster derivedFrom="NOW">
                     <name>ALARM</name>
                     <description>Alarm Datetime</description>
                     <addressOffset>0x60</addressOffset>
                 </cluster>
+                <register>
+                    <name>PREINT</name>
+                    <description>RTC Prescaler Integer Part</description>
+                    <addressOffset>0x80</addressOffset>
+                    <fields>
+                        <field>
+                            <name>PREINT</name>
+                            <bitRange>[12:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>PREFRAC</name>
+                    <description>RTC Prescaler Fraction Part</description>
+                    <addressOffset>0x84</addressOffset>
+                    <fields>
+                        <field>
+                            <name>PREFRAC</name>
+                            <bitRange>[14:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
             </registers>
         </peripheral>
     </peripherals>
