@@ -1829,6 +1829,204 @@
                 <name>SSP</name>
                 <value>11</value>
             </interrupt>
+            <registers>
+                <register>
+                    <name>CR0</name>
+                    <description>Control Register 0</description>
+                    <addressOffset>0x00</addressOffset>
+                    <fields>
+                        <field>
+                            <name>DSS</name>
+                            <description>Data Size Select</description>
+                            <bitRange>[3:0]</bitRange>
+                            <writeConstraint>
+                                <range>
+                                    <minimum>3</minimum>
+                                    <maximum>15</maximum>
+                                </range>
+                            </writeConstraint>
+                        </field>
+                        <field>
+                            <name>FRF</name>
+                            <description>Frame Format</description>
+                            <bitRange>[5:4]</bitRange>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>SPI</name>
+                                    <value>0b00</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>SSI</name>
+                                    <value>0b01</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>MICROWIRE</name>
+                                    <value>0b10</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>CPOL</name>
+                            <bitRange>[6:6]</bitRange>
+                        </field>
+                        <field>
+                            <name>CPHA</name>
+                            <bitRange>[7:7]</bitRange>
+                        </field>
+                        <field>
+                            <name>SCR</name>
+                            <description>Serial Clock Rate</description>
+                            <bitRange>[15:8]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CR1</name>
+                    <description>Configuration Register 1</description>
+                    <addressOffset>0x04</addressOffset>
+                    <fields>
+                        <field>
+                            <name>LBM</name>
+                            <description>Loopback Mode</description>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>SSE</name>
+                            <description>SSP Enable</description>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>MS</name>
+                            <description>Master/Slave Select</description>
+                            <bitRange>[2:2]</bitRange>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>MASTER</name>
+                                    <value>0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>SLAVE</name>
+                                    <value>1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>SOD</name>
+                            <description>Slave Output Disable</description>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>DR</name>
+                    <description>Data Register</description>
+                    <addressOffset>0x08</addressOffset>
+                    <fields>
+                        <field>
+                            <name>DATA</name>
+                            <bitRange>[15:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>SR</name>
+                    <description>Status Register</description>
+                    <addressOffset>0x0C</addressOffset>
+                    <resetValue>0x03</resetValue>
+                    <fields>
+                        <field>
+                            <name>TFE</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>TNF</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>RNE</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>RFF</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>BSY</name>
+                            <bitRange>[4:4]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CPSR</name>
+                    <description>Clock Prescaler Register</description>
+                    <addressOffset>0x10</addressOffset>
+                    <fields>
+                        <field>
+                            <name>CLKDIV</name>
+                            <bitRange>[7:1]</bitRange>
+                            <writeConstraint>
+                                <range>
+                                    <minimum>1</minimum>
+                                    <maximum>127</maximum>
+                                </range>
+                            </writeConstraint>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>IMSC</name>
+                    <description>Interrupt Enable Register</description>
+                    <addressOffset>0x14</addressOffset>
+                    <fields>
+                        <field>
+                            <name>RORI</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>RTI</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>RXI</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>TXI</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register derivedFrom="IMSC">
+                    <name>RIS</name>
+                    <description>Raw Interrupt Status Register</description>
+                    <addressOffset>0x18</addressOffset>
+                    <access>read-only</access>
+                    <resetValue>0x08</resetValue>
+                </register>
+                <register derivedFrom="IMSC">
+                    <name>MIS</name>
+                    <description>Masked Interrupt Status Register</description>
+                    <addressOffset>0x1C</addressOffset>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>ICR</name>
+                    <description>Interrupt Clear Register</description>
+                    <addressOffset>0x20</addressOffset>
+                    <access>write-only</access>
+                    <modifiedWriteValues>oneToClear</modifiedWriteValues>
+                    <fields>
+                        <field>
+                            <name>RORI</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>RTI</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+            </registers>
         </peripheral>
     </peripherals>
 </device>
