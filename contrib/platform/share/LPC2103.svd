@@ -1609,7 +1609,7 @@
                 <register>
                     <dim>2</dim>
                     <dimIncrement>4</dimIncrement>
-                    <dimIndex>L,H</dimIndex>
+                    <dimIndex>H,L</dimIndex>
                     <name>SCL%s</name>
                     <description>SCL %s Duty Cycle Register</description>
                     <addressOffset>0x10</addressOffset>
