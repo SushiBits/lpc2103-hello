@@ -2212,5 +2212,56 @@
             </registers>
         </peripheral>
 
+        <peripheral>
+            <name>TIMER0</name>
+            <description>General Purpose Timer 0</description>
+            <groupName>TIMER</groupName>
+            <headerStructName>TIMER</headerStructName>
+            <baseAddress>0xE0004000</baseAddress>
+            <addressBlock>
+                <offset>0x00</offset>
+                <size>0x40</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <addressBlock>
+                <offset>0x70</offset>
+                <size>0x8</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>TIMER0</name>
+                <value>4</value>
+            </interrupt>
+        </peripheral>
+
+        <peripheral derivedFrom="TIMER0">
+            <name>TIMER1</name>
+            <description>General Purpose Timer 1</description>
+            <baseAddress>0xE0008000</baseAddress>
+            <interrupt>
+                <name>TIMER1</name>
+                <value>5</value>
+            </interrupt>
+        </peripheral>
+
+        <peripheral derivedFrom="TIMER0">
+            <name>TIMER2</name>
+            <description>General Purpose Timer 2</description>
+            <baseAddress>0xE0070000</baseAddress>
+            <interrupt>
+                <name>TIMER1</name>
+                <value>26</value>
+            </interrupt>
+        </peripheral>
+
+        <peripheral derivedFrom="TIMER0">
+            <name>TIMER3</name>
+            <description>General Purpose Timer 3</description>
+            <baseAddress>0xE0074000</baseAddress>
+            <interrupt>
+                <name>TIMER1</name>
+                <value>27</value>
+            </interrupt>
+        </peripheral>
     </peripherals>
 </device>
