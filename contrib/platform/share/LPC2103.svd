@@ -1386,5 +1386,276 @@
                 <value>7</value>
             </interrupt>
         </peripheral>
+
+        <peripheral>
+            <name>I2C0</name>
+            <groupName>I2C</groupName>
+            <headerStructName>I2C</headerStructName>
+            <baseAddress>0xE001C000</baseAddress>
+            <addressBlock>
+                <offset>0x0</offset>
+                <size>0x1C</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>I2C0</name>
+                <value>9</value>
+            </interrupt>
+            <registers>
+                <register>
+                    <name>CONSET</name>
+                    <description>Control Set Register</description>
+                    <addressOffset>0x00</addressOffset>
+                    <modifiedWriteValues>oneToSet</modifiedWriteValues>
+                    <fields>
+                        <field>
+                            <name>AA</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>SI</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>STOP</name>
+                            <bitRange>[4:4]</bitRange>
+                        </field>
+                        <field>
+                            <name>START</name>
+                            <bitRange>[5:5]</bitRange>
+                        </field>
+                        <field>
+                            <name>I2EN</name>
+                            <bitRange>[6:6]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>STAT</name>
+                    <description>Status Register</description>
+                    <addressOffset>0x04</addressOffset>
+                    <access>read-only</access>
+                    <resetValue>0xF8</resetValue>
+                    <fields>
+                        <field>
+                            <name>STATUS</name>
+                            <bitRange>[7:3]</bitRange>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>TXSTART</name>
+                                    <description>START transmitted.</description>
+                                    <value>0x01</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXRSTART</name>
+                                    <description>ReSTART transmitted</description>
+                                    <value>0x02</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLAWACK</name>
+                                    <description>TX SLA+W acknowledged</description>
+                                    <value>0x03</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLAWNACK</name>
+                                    <description>TX SLA+W negative acknowledged</description>
+                                    <value>0x04</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXDATAACK</name>
+                                    <description>TX Data acknowledged</description>
+                                    <value>0x05</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXDATANACK</name>
+                                    <description>TX Data negative acknowledged</description>
+                                    <value>0x06</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>ARBLOST</name>
+                                    <description>Arbitration Lost</description>
+                                    <value>0x07</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLARACK</name>
+                                    <description>TX SLA+R acknowledged</description>
+                                    <value>0x08</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLARNACK</name>
+                                    <description>TX SLA+R negative acknowledged</description>
+                                    <value>0x09</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXDATAACK</name>
+                                    <description>RX Data acknowledged</description>
+                                    <value>0x0A</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXDATANACK</name>
+                                    <description>RX Data negative acknowledged</description>
+                                    <value>0x0B</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLAW</name>
+                                    <description>RX SLA+W</description>
+                                    <value>0x0C</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLAWAL</name>
+                                    <description>RX SLA+W losing arbitration</description>
+                                    <value>0x0D</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXGC</name>
+                                    <description>RX General Call</description>
+                                    <value>0x0E</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXGCAL</name>
+                                    <description>RX General Call losing arbitration</description>
+                                    <value>0x0F</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLADACK</name>
+                                    <description>SLA mode RX data with acknowledgement</description>
+                                    <value>0x10</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLADNACK</name>
+                                    <description>SLA mode RX data with negative acknowledgement</description>
+                                    <value>0x11</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXGCDACK</name>
+                                    <description>GC mode RX data with acknowledgement</description>
+                                    <value>0x12</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXGCDNACK</name>
+                                    <description>GC mode RX data with negative acknowledgement</description>
+                                    <value>0x13</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLASTOP</name>
+                                    <description>RX STOP or RESTART amid SLA mode</description>
+                                    <value>0x14</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLAR</name>
+                                    <description>RX SLA+R</description>
+                                    <value>0x15</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSLARAL</name>
+                                    <description>RX SLA+R losing arbitration</description>
+                                    <value>0x16</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLADACK</name>
+                                    <description>SLA mode TX data with acknowledgement</description>
+                                    <value>0x17</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLADNACK</name>
+                                    <description>SLA mode TX data with negative acknowledgement</description>
+                                    <value>0x18</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TXSLADLAST</name>
+                                    <description>SLA mode TX data with last data</description>
+                                    <value>0x19</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>BUSY</name>
+                                    <description>I2C block is busy</description>
+                                    <value>0x1F</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>ERROR</name>
+                                    <description>I2C bus error</description>
+                                    <value>0x00</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>DATA</name>
+                    <description>Data Register</description>
+                    <addressOffset>0x08</addressOffset>
+                    <fields>
+                        <field>
+                            <name>DATA</name>
+                            <bitRange>[7:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>ADR</name>
+                    <description>Slave Address Register</description>
+                    <addressOffset>0x0C</addressOffset>
+                    <fields>
+                        <field>
+                            <name>GC</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>ADDR</name>
+                            <bitRange>[7:1]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <dim>2</dim>
+                    <dimIncrement>4</dimIncrement>
+                    <dimIndex>L,H</dimIndex>
+                    <name>SCL%s</name>
+                    <description>SCL %s Duty Cycle Register</description>
+                    <addressOffset>0x10</addressOffset>
+                    <resetValue>0x0004</resetValue>
+                    <fields>
+                        <field>
+                            <name>DUTY</name>
+                            <bitRange>[15:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>CONCLR</name>
+                    <description>Control Clear Register</description>
+                    <addressOffset>0x18</addressOffset>
+                    <access>write-only</access>
+                    <modifiedWriteValues>oneToClear</modifiedWriteValues>
+                    <fields>
+                        <field>
+                            <name>AAC</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>SIC</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>STARTC</name>
+                            <bitRange>[5:5]</bitRange>
+                        </field>
+                        <field>
+                            <name>I2ENC</name>
+                            <bitRange>[6:6]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+            </registers>
+        </peripheral>
+
+        <peripheral derivedFrom="I2C0">
+            <name>I2C1</name>
+            <baseAddress>0xE005C000</baseAddress>
+            <interrupt>
+                <name>I2C1</name>
+                <value>19</value>
+            </interrupt>
+        </peripheral>
     </peripherals>
 </device>
