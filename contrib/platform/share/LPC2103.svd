@@ -2524,5 +2524,91 @@
                 <value>27</value>
             </interrupt>
         </peripheral>
+
+        <peripheral>
+            <name>WDT</name>
+            <description>Watchdog Timer</description>
+            <baseAddress>0xE0000000</baseAddress>
+            <addressBlock>
+                <offset>0x0</offset>
+                <size>0x10</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>WDT</name>
+                <value>0</value>
+            </interrupt>
+            <registers>
+                <register>
+                    <name>WDMOD</name>
+                    <description>Watchdog Mode</description>
+                    <addressOffset>0x0</addressOffset>
+                    <fields>
+                        <field>
+                            <name>EN</name>
+                            <description>WDT Enabled</description>
+                            <bitRange>[0:0]</bitRange>
+                            <access>write-only</access>
+                            <modifiedWriteValues>oneToSet</modifiedWriteValues>
+                        </field>
+                        <field>
+                            <name>RESET</name>
+                            <description>WDT causes RESET</description>
+                            <bitRange>[1:1]</bitRange>
+                            <access>write-only</access>
+                            <modifiedWriteValues>oneToSet</modifiedWriteValues>
+                        </field>
+                        <field>
+                            <name>OF</name>
+                            <description>WDT Overflowed</description>
+                            <bitRange>[2:2]</bitRange>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>INT</name>
+                            <description>WDT Interrupt Fired</description>
+                            <bitRange>[3:3]</bitRange>
+                            <access>read-only</access>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>TC</name>
+                    <description>Timer Constant Register</description>
+                    <addressOffset>0x04</addressOffset>
+                    <resetValue>0x000000FF</resetValue>
+                </register>
+                <register>
+                    <name>FEED</name>
+                    <description>Watchdog Fodder</description>
+                    <addressOffset>0x08</addressOffset>
+                    <access>write-only</access>
+                    <fields>
+                        <field>
+                            <name>FODDER</name>
+                            <bitRange>[7:0]</bitRange>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>KEY0</name>
+                                    <value>0xAA</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>KEY1</name>
+                                    <value>0x55</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>TV</name>
+                    <description>Timer Value Register</description>
+                    <addressOffset>0x0C</addressOffset>
+                    <access>read-only</access>
+                    <resetValue>0x000000FF</resetValue>
+                </register>
+            </registers>
+        </peripheral>
+
     </peripherals>
 </device>
