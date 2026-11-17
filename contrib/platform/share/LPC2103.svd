@@ -2610,5 +2610,115 @@
             </registers>
         </peripheral>
 
+        <peripheral>
+            <name>RTC</name>
+            <description>Real-time Clock</description>
+            <baseAddress>0xE0024000</baseAddress>
+            <addressBlock>
+                <offset>0x0</offset>
+                <size>0x88</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>RTC</name>
+                <value>13</value>
+            </interrupt>
+            <registers>
+                <cluster>
+                    <name>NOW</name>
+                    <description>Datetime</description>
+                    <headerStructName>DATETIME</headerStructName>
+                    <addressOffset>0x20</addressOffset>
+                    <register>
+                        <name>SEC</name>
+                        <addressOffset>0x0</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>0</minimum>
+                                <maximum>59</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>MINUTE</name>
+                        <addressOffset>0x04</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>0</minimum>
+                                <maximum>59</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>HOUR</name>
+                        <addressOffset>0x08</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>0</minimum>
+                                <maximum>23</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>DOM</name>
+                        <description>Day of Month</description>
+                        <addressOffset>0x0C</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>1</minimum>
+                                <maximum>31</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>DOW</name>
+                        <description>Day of Week</description>
+                        <addressOffset>0x10</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>0</minimum>
+                                <maximum>6</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>DOY</name>
+                        <description>Day of Year</description>
+                        <addressOffset>0x14</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>1</minimum>
+                                <maximum>366</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>MONTH</name>
+                        <addressOffset>0x18</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>1</minimum>
+                                <maximum>12</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                    <register>
+                        <name>YEAR</name>
+                        <addressOffset>0x1C</addressOffset>
+                        <writeConstraint>
+                            <range>
+                                <minimum>0</minimum>
+                                <maximum>4095</maximum>
+                            </range>
+                        </writeConstraint>
+                    </register>
+                </cluster>
+                <cluster derivedFrom="NOW">
+                    <name>ALARM</name>
+                    <description>Alarm Datetime</description>
+                    <addressOffset>0x60</addressOffset>
+                </cluster>
+            </registers>
+        </peripheral>
     </peripherals>
 </device>
