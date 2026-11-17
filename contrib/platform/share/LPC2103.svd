@@ -646,17 +646,17 @@
             <interrupt>
                 <name>SOFT_IRQ</name>
                 <description>Soft Interrupt</description>
-                <value>2</value>
+                <value>1</value>
             </interrupt>
             <interrupt>
                 <name>CPURX</name>
                 <description>CPU Debug RX</description>
-                <value>3</value>
+                <value>2</value>
             </interrupt>
             <interrupt>
                 <name>CPUTX</name>
                 <description>CPU Debug TX</description>
-                <value>4</value>
+                <value>3</value>
             </interrupt>
             <registers>
                 <register>
