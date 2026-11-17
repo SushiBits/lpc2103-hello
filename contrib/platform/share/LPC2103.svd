@@ -403,7 +403,7 @@
                                 <bitRange>[7:7]</bitRange>
                             </field>
                             <field>
-                                <name>SPI0</name>
+                                <name>SPI</name>
                                 <bitRange>[8:8]</bitRange>
                             </field>
                             <field>
@@ -411,7 +411,7 @@
                                 <bitRange>[9:9]</bitRange>
                             </field>
                             <field>
-                                <name>SPI1</name>
+                                <name>SSP</name>
                                 <bitRange>[10:10]</bitRange>
                             </field>
                             <field>
